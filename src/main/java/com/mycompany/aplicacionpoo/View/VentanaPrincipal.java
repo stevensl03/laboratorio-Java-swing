@@ -5,7 +5,6 @@
 package com.mycompany.aplicacionpoo.View;
 
 
-
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());

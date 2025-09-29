@@ -15,10 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author nicol
- */
+
 public class InscripcionController {
     public ArrayList<Inscripcion> mostrarInscripcion(){
         ArrayList<Inscripcion> listaInscripcion = new ArrayList<>();

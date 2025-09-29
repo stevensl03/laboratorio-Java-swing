@@ -28,7 +28,7 @@ public class Persona {
     public void setId(double id){
         this.id = id;
     }
-        public String getNombres() {
+    public String getNombres() {
         return nombres;
     }
 
