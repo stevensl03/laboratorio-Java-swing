@@ -17,10 +17,10 @@ public class PersonaDaoMySQL implements PersonaDao{
     public PersonaDaoMySQL(Connection conn) { this.conn = conn; }
     
     @Override 
-    public void guardarPersona(Persona persona) {
+    public void guardar(Persona persona) {
         String sql = "INSERT INTO persona (id, nombre, apellido, correo, tipo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, (int) persona.getId());
+            stmt.setDouble(1, persona.getId());
             stmt.setString(2, persona.getNombres());
             stmt.setString(3, persona.getApellidos());
             stmt.setString(4, persona.getEmail());
@@ -32,7 +32,7 @@ public class PersonaDaoMySQL implements PersonaDao{
     } 
     
     @Override
-    public void eliminarPersona(int id) { String sql = "DELETE FROM persona WHERE id = ?";
+    public void eliminar(int id) { String sql = "DELETE FROM persona WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) { stmt.setInt(1, id); stmt.executeUpdate(); 
         } catch (SQLException e) {
             System.out.println("❌ Error en MySQL (eliminarPersona): " + e.getMessage());
@@ -40,12 +40,12 @@ public class PersonaDaoMySQL implements PersonaDao{
     }
     
     @Override
-    public void actualizarPersona(Persona persona) {
+    public void actualizar(Persona persona) {
         String sql = "UPDATE persona SET nombre=?, apellido=?, correo=?, tipo=? WHERE id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, persona.getNombres());
             stmt.setString(2, persona.getApellidos()); stmt.setString(3, persona.getEmail());
-            stmt.setString(4, persona.getTipo()); stmt.setInt(5, (int) persona.getId()); 
+            stmt.setString(4, persona.getTipo()); stmt.setDouble(5, persona.getId()); 
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("❌ Error en MySQL (actualizarPersona): " + e.getMessage());
@@ -53,13 +53,13 @@ public class PersonaDaoMySQL implements PersonaDao{
     }
     
     @Override 
-    public List<Persona> mostrarPersonas() {
+    public List<Persona> mostrarTodos() {
         List<Persona> lista = new ArrayList<>();
         String sql = "SELECT * FROM persona"; 
         try (Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) { Persona persona = new Persona();
-                persona.setId(rs.getInt("id"));
+                persona.setId(rs.getDouble("id"));
                 persona.setNombres(rs.getString("nombre"));
                 persona.setApellidos(rs.getString("apellido"));
                 persona.setEmail(rs.getString("correo"));
@@ -72,10 +72,10 @@ public class PersonaDaoMySQL implements PersonaDao{
     }
 
     @Override
-    public Persona buscarPersona(int id) {
+    public Persona buscar(int id) {
         String sql = "SELECT id, nombre, apellido, correo, tipo FROM persona WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setDouble(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Persona(

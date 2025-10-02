@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.mycompany.aplicacionpoo.dao;
+import java.util.List;
+import com.mycompany.aplicacionpoo.Model.Inscripcion;
 
-/**
- *
- * @author steve
- */
-public interface InscripcionDao {
-    
+public interface InscripcionDao extends GenericDao<Inscripcion>{
+
 }

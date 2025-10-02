@@ -5,7 +5,7 @@
 package com.mycompany.aplicacionpoo.Model;
 
 
-import com.mycompany.aplicacionpoo.Config.ConexionDB;
+import com.mycompany.aplicacionpoo.adapter.DatabaseAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +16,7 @@ import java.util.List;
 
 public class CursosProfesores implements Servicios{
     private List<CursoProfesor> cursoProfesores;
+    DatabaseAdapter adapter = DatabaseAdapter.getInstance();
 
     public CursosProfesores(List<CursoProfesor> cursoProfesores) {
         this.cursoProfesores = cursoProfesores;

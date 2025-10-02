@@ -4,159 +4,87 @@
  */
 package com.mycompany.aplicacionpoo.Controller;
 
-import com.mycompany.aplicacionpoo.Config.ConexionDB;
 import com.mycompany.aplicacionpoo.Model.Curso;
-import com.mycompany.aplicacionpoo.Model.Programa;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.mycompany.aplicacionpoo.service.CursoService;
+import com.mycompany.aplicacionpoo.factory.factoryInterna.InternalFactory;
+import java.awt.HeadlessException;
+
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class CursoController {
-    
-    public ArrayList<Curso>  mostrarCurso(){
-        ArrayList<Curso> listaCurso = new ArrayList<>();
-        
-        String sql = """
-                     select c.id, c.nombre, c.activo, p.id as id_programa, p.nombre as nombre_programa
-                     from curso c
-                     inner join programa p on c.programa_id = p.id;
-                     """;
-            
-        
-        try(Connection conn = ConexionDB.conectar();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery()){
-            
-            while(rs.next()){
-                Curso c = new Curso();
-                c.setId(rs.getInt("id"));
-                c.setNombre(rs.getString("nombre"));
-                c.setActivo(rs.getBoolean("activo"));
-                
-                Programa p = new Programa();
-                p.setId(rs.getDouble("id_programa"));
-                p.setNombre(rs.getString("nombre_programa"));
-                
-                c.setPrograma(p);
-                listaCurso.add(c);
-            }
-            
-        } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "no se pudo mostrar Curso" +  e.getMessage());
+
+    private final CursoService cursoService;
+
+    public CursoController() {
+        InternalFactory factory = InternalFactory.getInstance();
+        this.cursoService = factory.createCursoService();
+    }
+
+    // =============================
+    // Mostrar todos los cursos
+    // =============================
+    public ArrayList<Curso> mostrarCurso() {
+        try {
+            List<Curso> cursos = cursoService.mostrarCurso();
+            return new ArrayList<>(cursos);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "❌ No se pudieron mostrar los cursos: " + e.getMessage());
+            return new ArrayList<>();
         }
-        return listaCurso;
     }
-    
+
+    // =============================
+    // Agregar curso
+    // =============================
     public void agregarCurso(int id, String nombre, boolean estado, double idPrograma) {
-        String sql = "INSERT INTO curso (id, nombre, activo, programa_id) VALUES (?, ?, ?, ?)";
-                
-                try(Connection conn = ConexionDB.conectar();
-                        PreparedStatement stmt = conn.prepareStatement(sql)){
-                        
-                       
-                        stmt.setInt(1, id);
-                        stmt.setString(2, nombre);
-                        stmt.setBoolean(3, estado);
-                        stmt.setDouble(4, idPrograma);
-                        
-                        stmt.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Curso agregado exitosamente.");
-                    
-                    
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error al agregar Curso: " + ex.getMessage());
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage());
-                }
+        try {
+            cursoService.guardarCurso(id, nombre, estado, idPrograma);
+            JOptionPane.showMessageDialog(null, "✅ Curso agregado exitosamente.");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al agregar curso: " + e.getMessage());
+        }
     }
-    
-    public void eliminarCurso(int id){
-        String sql = "delete from curso where id = ?";
 
-            try(Connection conn = ConexionDB.conectar();
-                    PreparedStatement stmt = conn.prepareCall(sql)){
-
-                stmt.setInt(1, id);
-
-                int filas = stmt.executeUpdate();
-
-                if (filas > 0) {
-                    JOptionPane.showMessageDialog(null, "Curso eliminado correctamente.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No existe ningún Curso con ese ID.");
-                }
-
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error" + ex);
-            }  
+    // =============================
+    // Eliminar curso
+    // =============================
+    public void eliminarCurso(int id) {
+        try {
+            cursoService.eliminarCurso(id);
+            JOptionPane.showMessageDialog(null, "✅ Curso eliminado correctamente.");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al eliminar curso: " + e.getMessage());
+        }
     }
-    
-    public Curso buscarCurso(int id){
-        String sql = """
-                     SELECT c.id, c.nombre, c.activo, p.id as id_programa, p.nombre as nombre_programa
-                     FROM curso c
-                     INNER JOIN programa p ON p.id = c.programa_id
-                     WHERE c.id = ?;
-                     """;
-        
-            try(Connection conn = ConexionDB.conectar();
-                PreparedStatement stmt = conn.prepareStatement(sql)){
 
-                stmt.setInt(1, id);
-                ResultSet rs = stmt.executeQuery();
-
-                if(rs.next()){
-                    Curso c = new Curso();
-                    c.setId(rs.getInt("id"));
-                    c.setNombre(rs.getString("nombre"));
-                    c.setActivo(rs.getBoolean("activo"));
-                
-                    Programa p = new Programa();
-                    p.setId(rs.getDouble("id_programa"));
-                    p.setNombre(rs.getString("nombre_programa"));
-                
-                    c.setPrograma(p);
-                    return c;
-                }else{
-                    JOptionPane.showMessageDialog(null, "No se encontró ninguna Información");
-                }
-
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al buscar información " + ex);
-            } catch (Exception e){
-                JOptionPane.showMessageDialog(null, "Error " + e);
+    // =============================
+    // Buscar curso
+    // =============================
+    public Curso buscarCurso(int id) {
+        try {
+            Curso curso = cursoService.buscarCurso(id);
+            if (curso != null) {
+                return curso;
+            } else {
+                JOptionPane.showMessageDialog(null, "⚠️ No se encontró ningún curso con ese ID.");
             }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al buscar curso: " + e.getMessage());
+        }
         return null;
     }
-    
+
+    // =============================
+    // Actualizar curso
+    // =============================
     public void actualizarCurso(int id, String nombre, boolean estado, double idPrograma) {
-        String sql = "UPDATE curso SET nombre = ?, activo = ?, programa_id = ? where id = ?";
-
-            try(Connection conn = ConexionDB.conectar();
-                PreparedStatement stmt = conn.prepareStatement(sql)){
-
-                
-                stmt.setString(1, nombre);
-                stmt.setBoolean(2, estado);
-                stmt.setDouble(3, idPrograma);
-                stmt.setDouble(4, id);
-                
-                int filas = stmt.executeUpdate();
-
-                if (filas > 0) {
-                    JOptionPane.showMessageDialog(null, "Curso actualizado correctamente.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No existe ningún Curso con ese ID.");
-                }
-
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al actualizar " + ex);
-            } catch (Exception e){
-                JOptionPane.showMessageDialog(null, "Error " + e.toString());
-            }
+        try {
+            cursoService.actualizarCurso(id, nombre, estado, idPrograma);
+            JOptionPane.showMessageDialog(null, "✅ Curso actualizado correctamente.");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al actualizar curso: " + e.getMessage());
         }
+    }
 }

@@ -2,6 +2,7 @@
 package com.mycompany.aplicacionpoo.Controller;
 
 import com.mycompany.aplicacionpoo.Model.Persona;
+import com.mycompany.aplicacionpoo.factory.factoryInterna.InternalFactory;
 import com.mycompany.aplicacionpoo.service.PersonaService;
 import java.awt.HeadlessException;
 
@@ -14,13 +15,13 @@ public class PersonaController {
     private final PersonaService personaService;
 
     public PersonaController() {
-        this.personaService = new PersonaService();
+        InternalFactory factory = InternalFactory.getInstance();
+        this.personaService = factory.createPersonaService();
     }
 
     public void guardarPersona(int id, String nombre, String apellido, String correo, String tipo) {
-        try {
-            Persona persona = new Persona(id, nombre, apellido, correo, tipo);
-            personaService.guardarPersona(persona);
+        try {   
+            personaService.guardarPersona(id, nombre, apellido, correo, tipo);
             JOptionPane.showMessageDialog(null, "Agregado correctamente");
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error al agregar persona: " + e.getMessage());
@@ -38,8 +39,7 @@ public class PersonaController {
 
     public void actualizarPersona(int id, String nombre, String apellido, String correo, String tipo) {
         try {
-            Persona persona = new Persona(id, nombre, apellido, correo, tipo);
-            personaService.actualizarPersona(persona);
+            personaService.actualizarPersona(id, nombre, apellido, correo, tipo);
             JOptionPane.showMessageDialog(null, "Persona actualizada correctamente.");
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());

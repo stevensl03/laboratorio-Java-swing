@@ -23,7 +23,7 @@ public class PersonaDaoH2 implements PersonaDao {
     }
 
     @Override
-    public void guardarPersona(Persona persona) {
+    public void guardar(Persona persona) {
         String sql = "INSERT INTO persona (id, nombre, apellido, correo, tipo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDouble(1, persona.getId());
@@ -39,7 +39,7 @@ public class PersonaDaoH2 implements PersonaDao {
     }
 
     @Override
-    public void eliminarPersona(int id) {
+    public void eliminar(int id) {
         String sql = "DELETE FROM persona WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -51,7 +51,7 @@ public class PersonaDaoH2 implements PersonaDao {
     }
 
     @Override
-    public void actualizarPersona(Persona persona) {
+    public void actualizar(Persona persona) {
         String sql = "UPDATE persona SET nombre=?, apellido=?, correo=?, tipo=? WHERE id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, persona.getNombres());
@@ -67,7 +67,7 @@ public class PersonaDaoH2 implements PersonaDao {
     }
 
     @Override
-    public List<Persona> mostrarPersonas() {
+    public List<Persona> mostrarTodos() {
         List<Persona> personas = new ArrayList<>();
         String sql = "SELECT id, nombre, apellido, correo, tipo FROM persona";
         try (Statement stmt = conn.createStatement();
@@ -89,7 +89,7 @@ public class PersonaDaoH2 implements PersonaDao {
     }
 
     @Override
-    public Persona buscarPersona(int id) {
+    public Persona buscar(int id) {
         String sql = "SELECT id, nombre, apellido, correo, tipo FROM persona WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);

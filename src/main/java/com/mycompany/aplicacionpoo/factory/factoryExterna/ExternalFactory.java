@@ -1,0 +1,149 @@
+package com.mycompany.aplicacionpoo.factory.factoryExterna;
+
+import com.mycompany.aplicacionpoo.dto.*;
+import com.mycompany.aplicacionpoo.Controller.*;
+import com.mycompany.aplicacionpoo.View.*;
+import com.mycompany.aplicacionpoo.Model.*;
+
+public class ExternalFactory {
+    
+    private static ExternalFactory instance;
+    
+    private ExternalFactory() {}
+    
+    public static synchronized ExternalFactory getInstance() {
+        if (instance == null) {
+            instance = new ExternalFactory();
+        }
+        return instance;
+    }
+    
+    
+    public PersonaDTO createPersonaDTO(Persona persona) {
+        if (persona == null) return null;
+        
+        return new PersonaDTO(
+            (int) persona.getId(),
+            persona.getNombres(),
+            persona.getApellidos(),
+            persona.getEmail(),
+            persona.getTipo()
+        );
+    }
+    
+    /**
+     * Crea un PersonaDTO con datos específicos
+     */
+    public PersonaDTO createPersonaDTO(int id, String nombres, String apellidos, String email, String tipo) {
+        return new PersonaDTO(id, nombres, apellidos, email, tipo);
+    }
+    
+    public EstudianteDTO createEstudianteDTO(Estudiante estudiante) {
+        if (estudiante == null) return null;
+        
+        return new EstudianteDTO(
+            (int) estudiante.getId(),
+            estudiante.getNombres(),
+            estudiante.getApellidos(),
+            estudiante.getEmail(),
+            (int) estudiante.getCodigo(),
+            estudiante.getPrograma() != null ? estudiante.getPrograma().getNombre() : "Sin programa",
+            estudiante.isActivo(),
+            estudiante.getPromedio()
+        );
+    }
+    
+    /**
+     * Crea un EstudianteDTO con datos específicos
+     */
+    public EstudianteDTO createEstudianteDTO(int id, String nombres, String apellidos, String email,
+                                           int codigo, String programaNombre, boolean activo, double promedio) {
+        return new EstudianteDTO(id, nombres, apellidos, email, codigo, programaNombre, activo, promedio);
+    }
+    
+    
+    public PersonaController createPersonaController() {
+        return new PersonaController();
+    }
+    
+    public EstudianteController createEstudianteController() {
+        return new EstudianteController();
+    }
+    
+    public ProfesorController createProfesorController() {
+        return new ProfesorController();
+    }
+    
+    public CursoController createCursoController() {
+        return new CursoController();
+    }
+    
+    public FacultadController createFacultadController() {
+        return new FacultadController();
+    }
+    
+    public ProgramaController createProgramaController() {
+        return new ProgramaController();
+    }
+    
+    public InscripcionController createInscripcionController() {
+        return new InscripcionController();
+    }
+    
+    public CursoProfesorController createCursoProfesorController() {
+        return new CursoProfesorController();
+    }
+    
+    
+    public VentanaPrincipal createVentanaPrincipal() {
+        return new VentanaPrincipal();
+    }
+    
+    public PersonasView createPersonasView() {
+        return new PersonasView();
+    }
+    
+    public EstudianteView createEstudianteView() {
+        return new EstudianteView();
+    }
+    
+    public ProfesorView createProfesorView() {
+        return new ProfesorView();
+    }
+    
+    public CursoView createCursoView() {
+        return new CursoView();
+    }
+    
+    public FacultadView createFacultadView() {
+        return new FacultadView();
+    }
+    
+    public ProgramaView createProgramaView() {
+        return new ProgramaView();
+    }
+    
+    public InscripcionView createInscripcionView() {
+        return new InscripcionView();
+    }
+    
+    public CursoProfesorView createCursoProfesorView() {
+        return new CursoProfesorView();
+    }
+    
+    
+    public PersonaDTO convertToDTO(Persona persona) {
+        return createPersonaDTO(persona);
+    }
+    
+    public EstudianteDTO convertToDTO(Estudiante estudiante) {
+        return createEstudianteDTO(estudiante);
+    }
+    public boolean isValidDTO(PersonaDTO dto) {
+        return dto != null && dto.isValid();
+    }
+    
+    public boolean isValidDTO(EstudianteDTO dto) {
+        return dto != null && dto.isValid();
+    }
+}

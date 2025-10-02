@@ -4,7 +4,7 @@
  */
 package com.mycompany.aplicacionpoo.service;
 
-import com.mycompany.aplicacionpoo.factory.factoryInterno.DaoFactory;
+import com.mycompany.aplicacionpoo.factory.factoryInterna.InternalFactory;
 import com.mycompany.aplicacionpoo.dao.PersonaDao;
 import com.mycompany.aplicacionpoo.Model.Persona;
 
@@ -16,39 +16,39 @@ import java.util.List;
 public class PersonaService {
 
 
-    private final PersonaDao personaDAO;
+    private final PersonaDao GenericDao;
 
     public PersonaService() {
         // Obtiene el DAO adecuado según db.properties (H2, MySQL o Postgres)
-        this.personaDAO = DaoFactory.getPersonaDao();
+        InternalFactory factory = InternalFactory.getInstance();
+        this.GenericDao =  factory.createPersonaDao();
     }
 
-    public void guardarPersona(Persona persona) {
+    public void guardarPersona(int id, String nombre, String apellido, String correo, String tipo) {
+        Persona persona = new Persona(id, nombre, apellido, correo, tipo);
         if (persona == null) {
             throw new IllegalArgumentException("La persona no puede ser nula");
         }
-        personaDAO.guardarPersona(persona);
+        GenericDao.guardar(persona);
     }
 
     public void eliminarPersona(int id) {
-        personaDAO.eliminarPersona(id);
+        GenericDao.eliminar(id);
     }
 
-    public void actualizarPersona(Persona persona) {
+    public void actualizarPersona(int id, String nombre, String apellido, String correo, String tipo) {
+        Persona persona = new Persona(id, nombre, apellido, correo, tipo);
         if (persona == null) {
             throw new IllegalArgumentException("La persona no puede ser nula");
         }
-        personaDAO.actualizarPersona(persona);
+        GenericDao.actualizar(persona);
     }
 
     public List<Persona> mostrarPersonas() {
-        return personaDAO.mostrarPersonas();
+        return GenericDao.mostrarTodos();
     }
 
     public Persona buscarPersona(int id) {
-        return personaDAO.buscarPersona(id);
+        return (Persona) GenericDao.buscar(id);
     }
-
-
- 
 }
