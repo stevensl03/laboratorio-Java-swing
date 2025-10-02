@@ -15,13 +15,21 @@ import javax.swing.JOptionPane;
 
 public class CursoController {
 
+    private static CursoController instance;
     private final CursoService cursoService;
 
-    public CursoController() {
+    private CursoController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.cursoService = factory.createCursoService();
     }
-
+    
+     public static synchronized CursoController getInstance(){
+         if (instance == null){
+            return new CursoController();
+         }
+         return instance;
+     }
+    
     // =============================
     // Mostrar todos los cursos
     // =============================

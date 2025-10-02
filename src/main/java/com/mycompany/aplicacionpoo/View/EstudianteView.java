@@ -6,6 +6,7 @@ package com.mycompany.aplicacionpoo.View;
 
 import com.mycompany.aplicacionpoo.Controller.EstudianteController;
 import com.mycompany.aplicacionpoo.Model.Estudiante;
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,15 +15,17 @@ import javax.swing.table.DefaultTableModel;
 public class EstudianteView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EstudianteView.class.getName());
-
+    private static ExternalFactory factory;
+    private static EstudianteController estudianteController;
     /**
      * Creates new form EstudianteView
      */
     public EstudianteView() {
         initComponents();
         setLocationRelativeTo(null);
-        EstudianteController e = new EstudianteController();
-        List<Estudiante> lista = e.mostrarEstudiante();
+        factory = ExternalFactory.getInstance();
+        estudianteController = factory.createEstudianteController();
+        List<Estudiante> lista = estudianteController.mostrarEstudiante();
         mostrarEstudianteEnTabla(lista);
     }
     
@@ -306,9 +309,8 @@ public class EstudianteView extends javax.swing.JFrame {
             boolean estado = Boolean.parseBoolean(estadotexto);
             double idPrograma = Double.parseDouble(idprogramatexto);
             
-            EstudianteController e = new EstudianteController();
-            e.agregarEstudiante(id, codigo, promedio, estado, idPrograma);
-            List<Estudiante> lista = e.mostrarEstudiante();
+            estudianteController.agregarEstudiante(id, codigo, promedio, estado, idPrograma);
+            List<Estudiante> lista = estudianteController.mostrarEstudiante();
             mostrarEstudianteEnTabla(lista);
 
         }
@@ -331,9 +333,8 @@ public class EstudianteView extends javax.swing.JFrame {
             boolean estado = Boolean.parseBoolean(estadotexto);
             double idPrograma = Double.parseDouble(idprogramatexto);
             
-            EstudianteController e = new EstudianteController();
-            e.actualizarEstudiante(id, codigo, promedio, estado, idPrograma);
-            List<Estudiante> lista = e.mostrarEstudiante();
+            estudianteController.actualizarEstudiante(id, codigo, promedio, estado, idPrograma);
+            List<Estudiante> lista = estudianteController.mostrarEstudiante();
             mostrarEstudianteEnTabla(lista);
 
         }
@@ -345,9 +346,8 @@ public class EstudianteView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "EL ID no puede estar vacio");
         }else{
             double id = Double.parseDouble(idtexto);
-            EstudianteController c = new EstudianteController();
-            c.eliminarEstudiante(id);
-            List<Estudiante> lista = c.mostrarEstudiante();
+            estudianteController.eliminarEstudiante(id);
+            List<Estudiante> lista = estudianteController.mostrarEstudiante();
             mostrarEstudianteEnTabla(lista);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -362,9 +362,8 @@ public class EstudianteView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "EL ID no puede estar vacio");
         }else{
             double id = Double.parseDouble(idtexto);
-            EstudianteController c = new EstudianteController();
-            Estudiante e = c.buscarEstudiante(id);
-            String estudiante = "ID: " + e.getId() + 
+            Estudiante e = estudianteController.buscarEstudiante(id);
+            String estudiante = "ID: " + e .getId() + 
                                  "\nCodigo: " + e.getCodigo() +
                                  "\nNombre: " + e.getNombres() +
                                  "\nEstado: " + e.isActivo() +
@@ -377,7 +376,7 @@ public class EstudianteView extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -408,7 +407,7 @@ public class EstudianteView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new EstudianteView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createEstudianteView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

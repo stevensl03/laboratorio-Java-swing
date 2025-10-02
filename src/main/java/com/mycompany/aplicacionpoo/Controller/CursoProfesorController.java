@@ -8,11 +8,20 @@ import java.util.List;
 
 public class CursoProfesorController {
 
+    private static CursoProfesorController instance;
     private final CursoProfesorService cursoProfesorService;
 
-    public CursoProfesorController() {
+    private CursoProfesorController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.cursoProfesorService = factory.createCursoProfesorService();
+    }
+    
+    public static synchronized CursoProfesorController getInstance(){
+        if (instance == null){
+            return new CursoProfesorController();
+        }
+        return instance;
+    
     }
 
     // Mostrar todos

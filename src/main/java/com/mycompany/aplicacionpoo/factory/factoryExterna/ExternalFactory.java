@@ -63,36 +63,37 @@ public class ExternalFactory {
     
     
     public PersonaController createPersonaController() {
-        return new PersonaController();
+        return PersonaController.getInstance();
     }
     
     public EstudianteController createEstudianteController() {
-        return new EstudianteController();
+        return EstudianteController.getInstance();
     }
     
     public ProfesorController createProfesorController() {
-        return new ProfesorController();
+        return ProfesorController.getInstance();
     }
     
     public CursoController createCursoController() {
-        return new CursoController();
+        return CursoController.getInstance();
     }
     
     public FacultadController createFacultadController() {
-        return new FacultadController();
+        return FacultadController.getInstance();
     }
     
     public ProgramaController createProgramaController() {
-        return new ProgramaController();
+        return ProgramaController.getInstance();
     }
     
     public InscripcionController createInscripcionController() {
-        return new InscripcionController();
+        return InscripcionController.getInstance();
     }
     
     public CursoProfesorController createCursoProfesorController() {
-        return new CursoProfesorController();
+        return CursoProfesorController.getInstance();
     }
+    
     
     
     public VentanaPrincipal createVentanaPrincipal() {

@@ -20,7 +20,6 @@ com\mycompany\aplicacionpoo\View\CursoProfesorView$4.class
 com\mycompany\aplicacionpoo\View\FacultadView$2.class
 com\mycompany\aplicacionpoo\View\CursoView$5.class
 com\mycompany\aplicacionpoo\View\VentanaPrincipal.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$5.class
 com\mycompany\aplicacionpoo\View\ProfesorView$4.class
 com\mycompany\aplicacionpoo\View\CursoView$2.class
 com\mycompany\aplicacionpoo\View\PersonasView$5.class
@@ -28,7 +27,6 @@ com\mycompany\aplicacionpoo\View\FacultadView$5.class
 com\mycompany\aplicacionpoo\dto\PersonaDTO.class
 com\mycompany\aplicacionpoo\service\CursoProfesorService.class
 com\mycompany\aplicacionpoo\adapter\DatabaseAdapter.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$8.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$1.class
 com\mycompany\aplicacionpoo\View\InscripcionView.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\PersonaDaoMySQL.class
@@ -39,21 +37,17 @@ com\mycompany\aplicacionpoo\View\FacultadView$1.class
 com\mycompany\aplicacionpoo\View\FacultadView$8.class
 com\mycompany\aplicacionpoo\View\ProgramaView$11.class
 com\mycompany\aplicacionpoo\annotation\Autowired.class
-com\mycompany\aplicacionpoo\View\VentanaPrincipalNetBeans.class
 com\mycompany\aplicacionpoo\dao\impl\h2\ProfesorDaoH2.class
 com\mycompany\aplicacionpoo\View\EstudianteView$9.class
 com\mycompany\aplicacionpoo\Model\CursosInscritos.class
 com\mycompany\aplicacionpoo\dao\EstudianteDao.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$9.class
 com\mycompany\aplicacionpoo\dao\impl\oracle\InscripcionDaoOracle.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$2.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$8.class
 com\mycompany\aplicacionpoo\View\InscripcionView$5.class
 com\mycompany\aplicacionpoo\View\PersonasView$2.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$2.class
 com\mycompany\aplicacionpoo\View\ProgramaView$5.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\EstudianteDaoMySQL.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$10.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\CursoDaoMySQL.class
 com\mycompany\aplicacionpoo\dao\impl\h2\ProgramaDaoH2.class
 com\mycompany\aplicacionpoo\View\CursoView.class
@@ -71,7 +65,6 @@ com\mycompany\aplicacionpoo\View\InscripcionView$4.class
 com\mycompany\aplicacionpoo\AplicacionPOOSimple.class
 com\mycompany\aplicacionpoo\Controller\InscripcionController.class
 com\mycompany\aplicacionpoo\dao\impl\oracle\CursoProfesorDaoOracle.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$3.class
 com\mycompany\aplicacionpoo\AplicacionPOOMejorada.class
 com\mycompany\aplicacionpoo\Controller\CursoProfesorController.class
 com\mycompany\aplicacionpoo\View\ProfesorView$5.class
@@ -88,12 +81,10 @@ com\mycompany\aplicacionpoo\View\CursoView$1.class
 com\mycompany\aplicacionpoo\AplicacionPOO.class
 com\mycompany\aplicacionpoo\dao\PersonaDao.class
 com\mycompany\aplicacionpoo\View\FacultadView$6.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$1.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\CursoProfesorDaoMySQL.class
 com\mycompany\aplicacionpoo\service\CursoService.class
 com\mycompany\aplicacionpoo\factory\factoryInterna\InternalFactory.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$3.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$4.class
 com\mycompany\aplicacionpoo\View\EstudianteView$4.class
 com\mycompany\aplicacionpoo\context\ApplicationContext.class
 com\mycompany\aplicacionpoo\service\FacultadService.class
@@ -106,7 +97,6 @@ com\mycompany\aplicacionpoo\View\FacultadView$3.class
 com\mycompany\aplicacionpoo\dao\impl\h2\PersonaDaoH2.class
 com\mycompany\aplicacionpoo\Controller\CursoController.class
 com\mycompany\aplicacionpoo\View\EstudianteView$1.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$7.class
 com\mycompany\aplicacionpoo\View\PersonasView$7.class
 com\mycompany\aplicacionpoo\View\VentanaPrincipal$1.class
 com\mycompany\aplicacionpoo\View\ProgramaView$6.class
@@ -118,7 +108,6 @@ com\mycompany\aplicacionpoo\View\InscripcionView$3.class
 com\mycompany\aplicacionpoo\View\PersonasView$10.class
 com\mycompany\aplicacionpoo\View\ProgramaView$9.class
 com\mycompany\aplicacionpoo\View\EstudianteView.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView.class
 com\mycompany\aplicacionpoo\View\InscripcionView$9.class
 com\mycompany\aplicacionpoo\View\EstudianteView$7.class
@@ -126,7 +115,6 @@ com\mycompany\aplicacionpoo\dao\impl\h2\FacultadDaoH2.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\ProfesorDaoMySQL.class
 com\mycompany\aplicacionpoo\dao\impl\oracle\ProfesorDaoOracle.class
 com\mycompany\aplicacionpoo\dao\CursoProfesorDao.class
-com\mycompany\aplicacionpoo\View\OldVentanaPrincipal$6.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$5.class
 com\mycompany\aplicacionpoo\dao\CursoDao.class
 com\mycompany\aplicacionpoo\View\PersonasView$6.class
@@ -140,7 +128,6 @@ com\mycompany\aplicacionpoo\View\ProgramaView$2.class
 com\mycompany\aplicacionpoo\View\FacultadView.class
 com\mycompany\aplicacionpoo\Model\CursosProfesores.class
 com\mycompany\aplicacionpoo\View\CursoView$3.class
-com\mycompany\aplicacionpoo\View\VentanaPrincipalNetBeans$1.class
 com\mycompany\aplicacionpoo\View\ProfesorView$3.class
 com\mycompany\aplicacionpoo\Model\InscripcionesPersonas.class
 com\mycompany\aplicacionpoo\dao\impl\h2\CursoDaoH2.class
@@ -164,7 +151,6 @@ com\mycompany\aplicacionpoo\View\FacultadView$4.class
 com\mycompany\aplicacionpoo\dao\ProgramaDao.class
 com\mycompany\aplicacionpoo\View\EstudianteView$5.class
 com\mycompany\aplicacionpoo\View\ProgramaView$1.class
-com\mycompany\aplicacionpoo\View\VentanaPrincipalNetBeans$2.class
 com\mycompany\aplicacionpoo\View\ProfesorView$2.class
 com\mycompany\aplicacionpoo\View\CursoView$4.class
 com\mycompany\aplicacionpoo\View\InscripcionView$1.class

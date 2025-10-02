@@ -10,12 +10,20 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ProgramaController {
-
+    
+    private static ProgramaController instance;
     private final ProgramaService programaService;
 
-    public ProgramaController() {
+    private ProgramaController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.programaService = factory.createProgramaService();
+    }
+    
+    public static synchronized ProgramaController getInstance(){
+        if (instance == null){
+            return  new ProgramaController();
+        }
+        return instance;
     }
 
     // Usado en ProgramaView para cargar la tabla

@@ -117,7 +117,6 @@ public class DatabaseAdapter {
         return switch (dbType) {
             case "H2" -> "CURRENT_DATE()";
             case "MYSQL" -> "CURDATE()";
-            case "POSTGRESQL" -> "CURRENT_DATE";
             case "ORACLE" -> "SYSDATE";
             default -> "CURRENT_DATE";
         };
@@ -127,7 +126,6 @@ public class DatabaseAdapter {
         return switch (dbType) {
             case "H2" -> "CURRENT_TIME()";
             case "MYSQL" -> "CURTIME()";
-            case "POSTGRESQL" -> "CURRENT_TIMESTAMP";
             case "ORACLE" -> "SYSTIMESTAMP";
             default -> "CURRENT_TIME";
         };

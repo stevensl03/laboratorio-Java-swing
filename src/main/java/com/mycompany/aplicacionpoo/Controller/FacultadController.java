@@ -11,11 +11,19 @@ import java.util.List;
 
 public class FacultadController {
 
+    private static FacultadController instance;
     private final FacultadService facultadService;
 
-    public FacultadController() {
+    private FacultadController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.facultadService = factory.createFacultadService();
+    }
+    
+    public static synchronized FacultadController getInstance(){
+        if(instance == null){
+            return new FacultadController();
+        }
+        return instance;
     }
 
     // Usado en FacultadView para cargar la tabla

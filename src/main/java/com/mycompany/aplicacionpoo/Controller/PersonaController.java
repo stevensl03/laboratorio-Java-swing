@@ -12,11 +12,19 @@ import java.util.List;
 
 public class PersonaController {
 
+    private static PersonaController instance;
     private final PersonaService personaService;
 
-    public PersonaController() {
+    private PersonaController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.personaService = factory.createPersonaService();
+    }
+    
+    public static synchronized PersonaController getInstance(){
+        if (instance == null){
+            return new PersonaController();
+        }
+        return instance;
     }
 
     public void guardarPersona(int id, String nombre, String apellido, String correo, String tipo) {

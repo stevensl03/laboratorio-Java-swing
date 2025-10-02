@@ -4,6 +4,7 @@
  */
 package com.mycompany.aplicacionpoo.View;
 
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Controller.InscripcionController;
 import com.mycompany.aplicacionpoo.Model.Inscripcion;
 import java.util.List;
@@ -14,15 +15,17 @@ import javax.swing.table.DefaultTableModel;
 public class InscripcionView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InscripcionView.class.getName());
-
+    private static ExternalFactory factory;
+    private static InscripcionController inscripcionController;
     /**
      * Creates new form InscripcionView
      */
     public InscripcionView() {
         initComponents();
         setLocationRelativeTo(null);
-        InscripcionController i = new InscripcionController();
-        List<Inscripcion> lista = i.mostrarInscripcion();
+        factory = ExternalFactory.getInstance();
+        inscripcionController = factory.createInscripcionController();
+        List<Inscripcion> lista = inscripcionController.mostrarInscripcion();
         mostrarInscripcionEnTabla(lista);
     }
     
@@ -283,11 +286,9 @@ public class InscripcionView extends javax.swing.JFrame {
             int semestre = Integer.parseInt(semestretexto);
             double idEstudiante = Double.parseDouble(idestudiante);
             int idCurso = Integer.parseInt(idcurso);
-            
-            InscripcionController i = new InscripcionController();
-            
-            i.agregarInscripcion(año, semestre, idEstudiante, idCurso);
-            List<Inscripcion> lista = i.mostrarInscripcion();
+                        
+            inscripcionController.agregarInscripcion(año, semestre, idEstudiante, idCurso);
+            List<Inscripcion> lista = inscripcionController.mostrarInscripcion();
             mostrarInscripcionEnTabla(lista);
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -307,11 +308,9 @@ public class InscripcionView extends javax.swing.JFrame {
             int semestre = Integer.parseInt(semestretexto);
             double idEstudiante = Double.parseDouble(idestudiante);
             int idCurso = Integer.parseInt(idcurso);
-            
-            InscripcionController i = new InscripcionController();
-            
-            i.actualizarInscripcion(año, semestre, idEstudiante, idCurso);
-            List<Inscripcion> lista = i.mostrarInscripcion();
+                        
+            inscripcionController.actualizarInscripcion(año, semestre, idEstudiante, idCurso);
+            List<Inscripcion> lista = inscripcionController.mostrarInscripcion();
             mostrarInscripcionEnTabla(lista);
         }
     }//GEN-LAST:event_actualizarActionPerformed
@@ -327,10 +326,8 @@ public class InscripcionView extends javax.swing.JFrame {
             double idEstudiante = Double.parseDouble(idestudiante);
             int idCurso = Integer.parseInt(idcurso);
             
-            InscripcionController i = new InscripcionController();
-            
-            i.eliminarInscripcion(idEstudiante, idCurso);
-            List<Inscripcion> lista = i.mostrarInscripcion();
+            inscripcionController.eliminarInscripcion(idEstudiante, idCurso);
+            List<Inscripcion> lista = inscripcionController.mostrarInscripcion();
             mostrarInscripcionEnTabla(lista);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -349,20 +346,19 @@ public class InscripcionView extends javax.swing.JFrame {
             double idEstudiante = Double.parseDouble(idestudiante);
             int idCurso = Integer.parseInt(idcurso);
             
-            InscripcionController i = new InscripcionController();
             
-            Inscripcion in = i.buscarInscripcion(idEstudiante, idCurso);
-            String inscripcion ="\nAño: " + in.getAño() +
-                                 "\nSemestre: " + in.getSemestre() +
-                                 "\nEstudiante: " + in.getEstudiante().getNombres() +
-                                 "\nCurso: " + in.getCurso().getNombre();
+            Inscripcion i = inscripcionController.buscarInscripcion(idEstudiante, idCurso);
+            String inscripcion ="\nAño: " + i.getAño() +
+                                 "\nSemestre: " + i.getSemestre() +
+                                 "\nEstudiante: " + i.getEstudiante().getNombres() +
+                                 "\nCurso: " + i.getCurso().getNombre();
 
                 JOptionPane.showMessageDialog(null, inscripcion);
         }
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -397,7 +393,7 @@ public class InscripcionView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InscripcionView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createInscripcionView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,9 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
+        
 public class VentanaPrincipal extends JFrame {
+    private static ExternalFactory factory;
     
     public VentanaPrincipal() {
+        factory = ExternalFactory.getInstance();
         initComponents();
         setupLookAndFeel();
         setLocationRelativeTo(null);
@@ -87,14 +91,14 @@ public class VentanaPrincipal extends JFrame {
         panel.setLayout(new GridLayout(3, 3, 15, 15));
         panel.setBorder(new EmptyBorder(20, 20, 20, 20));
         
-        panel.add(createClickableInfoCard("👥", "Personas", "Gestiona personas del sistema", () -> openWindow(new PersonasView())));
-        panel.add(createClickableInfoCard("🎓", "Estudiantes", "Administra estudiantes", () -> openWindow(new EstudianteView())));
-        panel.add(createClickableInfoCard("👨‍🏫", "Profesores", "Gestiona profesores", () -> openWindow(new ProfesorView())));
-        panel.add(createClickableInfoCard("🏛️", "Facultades", "Administra facultades", () -> openWindow(new FacultadView())));
-        panel.add(createClickableInfoCard("📋", "Programas", "Gestiona programas académicos", () -> openWindow(new ProgramaView())));
-        panel.add(createClickableInfoCard("📚", "Cursos", "Administra cursos", () -> openWindow(new CursoView())));
-        panel.add(createClickableInfoCard("📝", "Inscripciones", "Gestiona inscripciones", () -> openWindow(new InscripcionView())));
-        panel.add(createClickableInfoCard("🔗", "Curso-Profesor", "Asigna profesores a cursos", () -> openWindow(new CursoProfesorView())));
+        panel.add(createClickableInfoCard("👥", "Personas", "Gestiona personas del sistema", () -> openWindow(factory.createPersonasView())));
+        panel.add(createClickableInfoCard("🎓", "Estudiantes", "Administra estudiantes", () -> openWindow(factory.createEstudianteView())));
+        panel.add(createClickableInfoCard("👨‍🏫", "Profesores", "Gestiona profesores", () -> openWindow(factory.createProfesorView())));
+        panel.add(createClickableInfoCard("🏛️", "Facultades", "Administra facultades", () -> openWindow(factory.createFacultadView())));
+        panel.add(createClickableInfoCard("📋", "Programas", "Gestiona programas académicos", () -> openWindow(factory.createProgramaView())));
+        panel.add(createClickableInfoCard("📚", "Cursos", "Administra cursos", () -> openWindow(factory.createCursoView())));
+        panel.add(createClickableInfoCard("📝", "Inscripciones", "Gestiona inscripciones", () -> openWindow(factory.createInscripcionView())));
+        panel.add(createClickableInfoCard("🔗", "Curso-Profesor", "Asigna profesores a cursos", () -> openWindow(factory.createCursoProfesorView())));
         
         panel.add(createSystemInfoCard());
         
@@ -297,7 +301,7 @@ public class VentanaPrincipal extends JFrame {
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new VentanaPrincipal().setVisible(true);
+            factory.createVentanaPrincipal().setVisible(true);
         });
     }
 }

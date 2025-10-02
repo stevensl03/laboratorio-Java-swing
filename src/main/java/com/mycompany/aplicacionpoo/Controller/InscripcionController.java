@@ -11,11 +11,19 @@ import javax.swing.JOptionPane;
 
 public class InscripcionController {
 
+    private static InscripcionController instance;
     private final InscripcionService inscripcionService;
 
-    public InscripcionController() {
+    private InscripcionController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.inscripcionService = factory.createInscripcionService();
+    }
+    
+    public static synchronized InscripcionController getInstance(){
+        if (instance == null){
+            return new InscripcionController();
+        }
+        return instance;
     }
 
     // Mostrar todas las inscripciones

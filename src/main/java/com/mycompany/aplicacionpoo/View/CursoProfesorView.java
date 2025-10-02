@@ -7,6 +7,7 @@ package com.mycompany.aplicacionpoo.View;
 import com.mycompany.aplicacionpoo.Controller.CursoProfesorController;
 import com.mycompany.aplicacionpoo.Controller.InscripcionController;
 import com.mycompany.aplicacionpoo.Model.CursoProfesor;
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Model.Inscripcion;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +18,17 @@ import javax.swing.table.DefaultTableModel;
 public class CursoProfesorView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CursoProfesorView.class.getName());
-
+    private final CursoProfesorController cursoProfesorController;
+    private static  ExternalFactory factory;
     /**
      * Creates new form CursoProfesorView
      */
     public CursoProfesorView() {
         initComponents();
         setLocationRelativeTo(null);
-        CursoProfesorController cp = new CursoProfesorController();
-        List<CursoProfesor> lista = cp.mostrarCursoProfesor();
+         factory = ExternalFactory.getInstance();
+        cursoProfesorController = factory.createCursoProfesorController();
+        List<CursoProfesor> lista = cursoProfesorController.mostrarCursoProfesor();
         mostrarCursoProfesorEnTabla(lista);
     }
     
@@ -285,10 +288,9 @@ public class CursoProfesorView extends javax.swing.JFrame {
             double idProfesor = Double.parseDouble(idprofesor);
             int idCurso = Integer.parseInt(idcurso);
             
-            CursoProfesorController cp = new CursoProfesorController();
             
-            cp.agregarCursoProfesor(año, semestre, idProfesor, idCurso);
-            List<CursoProfesor> lista = cp.mostrarCursoProfesor();
+            cursoProfesorController.agregarCursoProfesor(año, semestre, idProfesor, idCurso);
+            List<CursoProfesor> lista = cursoProfesorController.mostrarCursoProfesor();
             mostrarCursoProfesorEnTabla(lista);
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -309,10 +311,9 @@ public class CursoProfesorView extends javax.swing.JFrame {
             double idProfesor = Double.parseDouble(idprofesor);
             int idCurso = Integer.parseInt(idcurso);
             
-            CursoProfesorController cp = new CursoProfesorController();
             
-            cp.actualizarCursoProfesor(año, semestre, idProfesor, idCurso);
-            List<CursoProfesor> lista = cp.mostrarCursoProfesor();
+            cursoProfesorController.actualizarCursoProfesor(año, semestre, idProfesor, idCurso);
+            List<CursoProfesor> lista = cursoProfesorController.mostrarCursoProfesor();
             mostrarCursoProfesorEnTabla(lista);
         }
     }//GEN-LAST:event_actualizarActionPerformed
@@ -322,7 +323,7 @@ public class CursoProfesorView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -346,10 +347,9 @@ public class CursoProfesorView extends javax.swing.JFrame {
             double idProfesor = Double.parseDouble(idprofesor);
             int idCurso = Integer.parseInt(idcurso);
             
-            CursoProfesorController cp = new CursoProfesorController();
             
-            cp.eliminarCursoProfesor(idProfesor, idCurso);
-            List<CursoProfesor> lista = cp.mostrarCursoProfesor();
+            cursoProfesorController.eliminarCursoProfesor(idProfesor, idCurso);
+            List<CursoProfesor> lista = cursoProfesorController.mostrarCursoProfesor();
             mostrarCursoProfesorEnTabla(lista);
         }
     }//GEN-LAST:event_eliminarActionPerformed
@@ -365,9 +365,8 @@ public class CursoProfesorView extends javax.swing.JFrame {
             double idProfesor = Double.parseDouble(idprofesor);
             int idCurso = Integer.parseInt(idcurso);
             
-            CursoProfesorController cp = new CursoProfesorController();
             
-            CursoProfesor c = cp.buscarCursoProfesor(idProfesor, idCurso);
+            CursoProfesor c = cursoProfesorController.buscarCursoProfesor(idProfesor, idCurso);
             String  cursoprofesor ="\nAño: " + c.getAño() +
                                  "\nSemestre: " + c.getSemestre() +
                                  "\nProfesor: " + c.getProfesor().getNombres() +
@@ -399,7 +398,7 @@ public class CursoProfesorView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CursoProfesorView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createCursoProfesorView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

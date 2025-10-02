@@ -6,6 +6,7 @@ package com.mycompany.aplicacionpoo.View;
 
 
 import com.mycompany.aplicacionpoo.Model.Persona;
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Controller.PersonaController;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,14 +17,17 @@ import javax.swing.table.DefaultTableModel;
 public class PersonasView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PersonasView.class.getName());
-
+    private static ExternalFactory factory;
+    private static PersonaController personaController;
+    
     /**
      * Creates new form PersonasView
      */
     public PersonasView() {
         initComponents();
         setLocationRelativeTo(null);
-        PersonaController personaController = new PersonaController();
+        factory = ExternalFactory.getInstance();
+        personaController= factory.createPersonaController();
         List<Persona> persona = personaController.mostrarPersona();
         mostrarPersonasEnTabla(persona);
     }
@@ -302,10 +306,7 @@ public class PersonasView extends javax.swing.JFrame {
         String apellido = apellidoPersonajText.getText();
         String correo = emailPersonajText.getText();
         String tipo = tipoPersonajCombo.getSelectedItem().toString();
-
-        PersonaController personaController = new PersonaController();
         
-
         if (idtexto.trim().isEmpty() ||nombre.trim().isEmpty() || 
             apellido.trim().isEmpty() || 
             correo.trim().isEmpty() || 
@@ -326,10 +327,7 @@ public class PersonasView extends javax.swing.JFrame {
         String nombre = nombrePersonaJText.getText();
         String apellido = apellidoPersonajText.getText();
         String correo = emailPersonajText.getText();
-        String tipo = tipoPersonajCombo.getSelectedItem().toString();
-
-        PersonaController personaController = new PersonaController();
-        
+        String tipo = tipoPersonajCombo.getSelectedItem().toString();        
 
         if (idtexto.trim().isEmpty() ||nombre.trim().isEmpty() || 
             apellido.trim().isEmpty() || 
@@ -356,7 +354,6 @@ public class PersonasView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede ser vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            PersonaController personaController = new PersonaController();
             personaController.eliminarPersona(id);
             List<Persona> persona = personaController.mostrarPersona();
             mostrarPersonasEnTabla(persona);
@@ -371,7 +368,6 @@ public class PersonasView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede ser vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            PersonaController personaController = new PersonaController();
             Persona p = personaController.buscarPersona(id);
             
             if(p == null){
@@ -391,7 +387,7 @@ public class PersonasView extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -418,7 +414,7 @@ public class PersonasView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PersonasView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createPersonasView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

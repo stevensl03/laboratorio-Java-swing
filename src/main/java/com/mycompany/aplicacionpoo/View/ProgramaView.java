@@ -4,6 +4,7 @@
  */
 package com.mycompany.aplicacionpoo.View;
 
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Controller.ProgramaController;
 import com.mycompany.aplicacionpoo.Model.Programa;
 import java.text.ParseException;
@@ -17,15 +18,17 @@ import javax.swing.table.DefaultTableModel;
 public class ProgramaView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProgramaView.class.getName());
-
+    private static ExternalFactory factory;
+    private static ProgramaController programaController;
     /**
      * Creates new form ProgramaView
      */
     public ProgramaView() {
         initComponents();
         setLocationRelativeTo(null);
-        ProgramaController pc = new ProgramaController();
-        List<Programa> lista = pc.mostrarPrograma();
+        factory = ExternalFactory.getInstance();
+        programaController = factory.createProgramaController();
+        List<Programa> lista = programaController.mostrarPrograma();
         mostrarProgramaEnTabla(lista);
     }
     
@@ -324,9 +327,8 @@ public class ProgramaView extends javax.swing.JFrame {
                 java.sql.Date registro = new java.sql.Date(fecha.getTime());
 
                 
-                ProgramaController pc = new ProgramaController();
-                pc.guardarPrograma(id, nombre, duracion, registro, idFacultad);
-                List<Programa> lista = pc.mostrarPrograma();
+                programaController.guardarPrograma(id, nombre, duracion, registro, idFacultad);
+                List<Programa> lista = programaController.mostrarPrograma();
                 mostrarProgramaEnTabla(lista);
                 
             } catch (ParseException ex) {
@@ -355,9 +357,8 @@ public class ProgramaView extends javax.swing.JFrame {
                 java.util.Date fecha = fd.parse(registrotexto);
                 java.sql.Date registro = new java.sql.Date(fecha.getTime());
                 
-                ProgramaController pc = new ProgramaController();
-                pc.actualizarPrograma(id, nombre, duracion, registro, idFacultad);
-                List<Programa> lista = pc.mostrarPrograma();
+                programaController.actualizarPrograma(id, nombre, duracion, registro, idFacultad);
+                List<Programa> lista = programaController.mostrarPrograma();
                 mostrarProgramaEnTabla(lista);
                 
             } catch (ParseException ex) {
@@ -372,9 +373,8 @@ public class ProgramaView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El ID no puede estar vacio");
         }else{
             double id = Double.parseDouble(idtexto);
-            ProgramaController pc = new ProgramaController();
-            pc.eliminarPrograma(id);
-            List<Programa> lista = pc.mostrarPrograma();
+            programaController.eliminarPrograma(id);
+            List<Programa> lista = programaController.mostrarPrograma();
             mostrarProgramaEnTabla(lista);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -390,22 +390,21 @@ public class ProgramaView extends javax.swing.JFrame {
         }else{
             double id = Double.parseDouble(idtexto);
             
-            ProgramaController pc = new ProgramaController();
-            Programa programa = pc.buscarPrograma(id);
+            Programa p = programaController.buscarPrograma(id);
         
-        String program = "ID: " + programa.getId() + 
-                                 "\nNombre: " + programa.getNombre() +
-                                 "\nDuración: " + programa.getDuracion() +
-                                 "\nRegistro: " + programa.getRegistro() +
-                                 "\nID Facultad: " + programa.getFacultad().getId() +
-                                 "\nFacultad: " + programa.getFacultad().getNombre();
+        String programa = "ID: " + p.getId() + 
+                                 "\nNombre: " + p.getNombre() +
+                                 "\nDuración: " + p.getDuracion() +
+                                 "\nRegistro: " + p.getRegistro() +
+                                 "\nID Facultad: " + p.getFacultad().getId() +
+                                 "\nFacultad: " + p.getFacultad().getNombre();
 
-                JOptionPane.showMessageDialog(null, program);
+                JOptionPane.showMessageDialog(null, programa);
         }
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -447,7 +446,7 @@ public class ProgramaView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ProgramaView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createProgramaView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@ package com.mycompany.aplicacionpoo.View;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Controller.ProfesorController;
 import com.mycompany.aplicacionpoo.Model.Profesor;
 import java.util.List;
@@ -15,14 +16,16 @@ import javax.swing.table.DefaultTableModel;
 public class ProfesorView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProfesorView.class.getName());
-
+    private static ExternalFactory factory;
+    private static ProfesorController profesorController;
     /**
      * Creates new form ProfesorView
      */
     public ProfesorView() {
         initComponents();
         setLocationRelativeTo(null);
-        ProfesorController profesorController = new ProfesorController();
+        factory = ExternalFactory.getInstance();
+        profesorController = factory.createProfesorController();
         List<Profesor> profesor = profesorController.mostrarProfesor();
         mostrarProfesorEnTabla(profesor);
     }
@@ -240,9 +243,8 @@ public class ProfesorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios");
         }else{
             int id = Integer.parseInt(idtexto);
-            ProfesorController p = new ProfesorController();
-            p.agregarProfesor(id, tipoContrato);
-            List<Profesor> profesor = p.mostrarProfesor();
+            profesorController.agregarProfesor(id, tipoContrato);
+            List<Profesor> profesor = profesorController.mostrarProfesor();
         mostrarProfesorEnTabla(profesor);
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -255,9 +257,8 @@ public class ProfesorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios");
         }else{
             int id = Integer.parseInt(idtexto);
-            ProfesorController p = new ProfesorController();
-            p.actualizarProfesor(id, tipoContrato);
-            List<Profesor> profesor = p.mostrarProfesor();
+            profesorController.actualizarProfesor(id, tipoContrato);
+            List<Profesor> profesor = profesorController.mostrarProfesor();
             mostrarProfesorEnTabla(profesor);
         }
     }//GEN-LAST:event_actualizarActionPerformed
@@ -269,9 +270,8 @@ public class ProfesorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede estar vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            ProfesorController p = new ProfesorController();
-            p.eliminarProfesor(id);
-            List<Profesor> profesor = p.mostrarProfesor();
+            profesorController.eliminarProfesor(id);
+            List<Profesor> profesor = profesorController.mostrarProfesor();
             mostrarProfesorEnTabla(profesor);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -287,7 +287,6 @@ public class ProfesorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede esta vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            ProfesorController profesorController = new ProfesorController();
             Profesor p = profesorController.buscarProfesor(id);
             if(p == null){
                 JOptionPane.showMessageDialog(null, "No se encontró profesor con ese id");
@@ -305,7 +304,7 @@ public class ProfesorView extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -332,7 +331,7 @@ public class ProfesorView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ProfesorView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createProfesorView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

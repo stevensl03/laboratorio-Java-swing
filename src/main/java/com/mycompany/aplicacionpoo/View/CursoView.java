@@ -5,6 +5,7 @@
 package com.mycompany.aplicacionpoo.View;
 
 import com.mycompany.aplicacionpoo.Controller.CursoController;
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Model.Curso;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,15 +15,17 @@ import javax.swing.table.DefaultTableModel;
 public class CursoView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CursoView.class.getName());
-
+    private static ExternalFactory factory;
+    private static CursoController cursoController;
     /**
      * Creates new form CursoView
      */
     public CursoView() {
         initComponents();
         setLocationRelativeTo(null);
-        CursoController cc = new CursoController();
-        List<Curso> listaCurso = cc.mostrarCurso();
+        factory = ExternalFactory.getInstance();
+        cursoController = factory.createCursoController();
+        List<Curso> listaCurso = cursoController.mostrarCurso();
         mostrarCursoEnTabla(listaCurso);
     }
     
@@ -283,9 +286,8 @@ public class CursoView extends javax.swing.JFrame {
             boolean estado = Boolean.parseBoolean(estadotexto);
             double idPrograma = Double.parseDouble(idprogramatexto);
             
-            CursoController cc = new CursoController();
-            cc.agregarCurso(id, nombre, estado, idPrograma);
-            List<Curso> lista = cc.mostrarCurso();
+            cursoController.agregarCurso(id, nombre, estado, idPrograma);
+            List<Curso> lista = cursoController.mostrarCurso();
             mostrarCursoEnTabla(lista);
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -305,9 +307,8 @@ public class CursoView extends javax.swing.JFrame {
             boolean estado = Boolean.parseBoolean(estadotexto);
             double idPrograma = Double.parseDouble(idprogramatexto);
             
-            CursoController cc = new CursoController();
-            cc.actualizarCurso(id, nombre, estado, idPrograma);
-            List<Curso> lista = cc.mostrarCurso();
+            cursoController.actualizarCurso(id, nombre, estado, idPrograma);
+            List<Curso> lista = cursoController.mostrarCurso();
             mostrarCursoEnTabla(lista);
         }
     }//GEN-LAST:event_actualizarActionPerformed
@@ -318,9 +319,8 @@ public class CursoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El ID no puede esta vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            CursoController cc = new CursoController();
-            cc.eliminarCurso(id);
-            List<Curso> lista = cc.mostrarCurso();
+            cursoController.eliminarCurso(id);
+            List<Curso> lista = cursoController.mostrarCurso();
             mostrarCursoEnTabla(lista);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -335,8 +335,7 @@ public class CursoView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El ID no puede esta vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            CursoController cc = new CursoController();
-            Curso curso = cc.buscarCurso(id);
+            Curso curso = cursoController.buscarCurso(id);
                       
         String course = "ID: " + curso.getId() + 
                                  "\nNombre: " + curso.getNombre() +
@@ -349,7 +348,7 @@ public class CursoView extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -376,7 +375,7 @@ public class CursoView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CursoView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createCursoView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

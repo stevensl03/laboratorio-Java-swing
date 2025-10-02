@@ -11,11 +11,19 @@ import java.util.List;
 
 public class EstudianteController {
 
+    private static EstudianteController instance;
     private final EstudianteService estudianteService;
 
-    public EstudianteController() {
+    private EstudianteController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.estudianteService = factory.createEstudianteService();
+    }
+    
+    public static synchronized EstudianteController getInstance(){
+        if (instance == null){
+            return new EstudianteController();
+        }
+        return instance;
     }
 
     // Mostrar todos los estudiantes

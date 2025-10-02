@@ -13,12 +13,20 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ProfesorController {
-
+    
+    private static ProfesorController instance;
     private final ProfesorService profesorService;
 
-    public ProfesorController() {
+    private ProfesorController() {
         InternalFactory factory = InternalFactory.getInstance();
         this.profesorService = factory.createProfesorService();
+    }
+    
+    public static synchronized ProfesorController getInstance(){
+        if (instance == null){
+            return new ProfesorController();
+        }
+        return instance;
     }
 
     public void agregarProfesor(int id, String tipoContrato) {

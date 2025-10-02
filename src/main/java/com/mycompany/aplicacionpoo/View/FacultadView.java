@@ -4,6 +4,7 @@
  */
 package com.mycompany.aplicacionpoo.View;
 
+import com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory;
 import com.mycompany.aplicacionpoo.Controller.FacultadController;
 import com.mycompany.aplicacionpoo.Model.Facultad;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 public class FacultadView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FacultadView.class.getName());
+    private static ExternalFactory factory;
+    private static FacultadController facultadController;
 
     /**
      * Creates new form FacultadView
@@ -21,7 +24,8 @@ public class FacultadView extends javax.swing.JFrame {
     public FacultadView() {
         initComponents();
         setLocationRelativeTo(null);
-        FacultadController facultadController = new FacultadController();
+        factory = ExternalFactory.getInstance();
+        facultadController = factory.createFacultadController();
         List<Facultad> facultad = facultadController.mostrarFacultad();
         mostrarFacultadEnTabla(facultad);
     }
@@ -261,9 +265,8 @@ public class FacultadView extends javax.swing.JFrame {
             int id = Integer.parseInt(idtexto);
             int idDecano = Integer.parseInt(iddecano);
             
-            FacultadController f = new FacultadController();
-            f.agregarFacultad(id, nombre, idDecano);
-            List<Facultad> facultad = f.mostrarFacultad();
+            facultadController.agregarFacultad(id, nombre, idDecano);
+            List<Facultad> facultad = facultadController.mostrarFacultad();
             mostrarFacultadEnTabla(facultad);
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -280,9 +283,8 @@ public class FacultadView extends javax.swing.JFrame {
             int id = Integer.parseInt(idtexto);
             int idDecano = Integer.parseInt(iddecano);
             
-            FacultadController f = new FacultadController();
-            f.actualizarFacultad(id, nombre, idDecano);
-            List<Facultad> facultad = f.mostrarFacultad();
+            facultadController.actualizarFacultad(id, nombre, idDecano);
+            List<Facultad> facultad = facultadController.mostrarFacultad();
             mostrarFacultadEnTabla(facultad);
         }
     }//GEN-LAST:event_actualizarActionPerformed
@@ -294,9 +296,8 @@ public class FacultadView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede estar vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            FacultadController f = new FacultadController();
-            f.eliminarFacultad(id);
-            List<Facultad> lista = f.mostrarFacultad();
+            facultadController.eliminarFacultad(id);
+            List<Facultad> lista = facultadController.mostrarFacultad();
             mostrarFacultadEnTabla(lista);
         }
     }//GEN-LAST:event_EliminarActionPerformed
@@ -312,8 +313,7 @@ public class FacultadView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ID no puede esta vacio");
         }else{
             int id = Integer.parseInt(idtexto);
-            FacultadController f = new FacultadController();
-            Facultad facultad = f.buscarFacultad(id);
+            Facultad facultad = facultadController.buscarFacultad(id);
             if(facultad == null){
                 JOptionPane.showMessageDialog(null, "No se encontró facultad con ese id");
             }else{
@@ -331,7 +331,7 @@ public class FacultadView extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = factory.createVentanaPrincipal();
         vp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
@@ -358,7 +358,7 @@ public class FacultadView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FacultadView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> factory.createFacultadView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
