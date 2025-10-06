@@ -4,6 +4,7 @@
  */
 package com.mycompany.aplicacionpoo.dao.impl.h2;
 
+import com.mycompany.aplicacionpoo.factory.factoryInterna.InternalFactory;
 import com.mycompany.aplicacionpoo.dao.PersonaDao;
 import com.mycompany.aplicacionpoo.Model.Persona;
 
@@ -15,10 +16,12 @@ import java.util.List;
  * @author steve
  */
 public class PersonaDaoH2 implements PersonaDao {
-    
+
+    private static InternalFactory factory;
     private final Connection conn;
 
     public PersonaDaoH2(Connection conn) {
+        factory = InternalFactory.getInstance();
         this.conn = conn;
     }
 
@@ -27,9 +30,9 @@ public class PersonaDaoH2 implements PersonaDao {
         String sql = "INSERT INTO persona (id, nombre, apellido, correo, tipo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDouble(1, persona.getId());
-            stmt.setString(2, persona.getNombres());
-            stmt.setString(3, persona.getApellidos());
-            stmt.setString(4, persona.getEmail());
+            stmt.setString(2, persona.getNombres()); 
+            stmt.setString(3, persona.getApellidos()); 
+            stmt.setString(4, persona.getEmail()); 
             stmt.setString(5, persona.getTipo());
             stmt.executeUpdate();
             System.out.println("✅ Persona guardada en H2");
@@ -73,8 +76,8 @@ public class PersonaDaoH2 implements PersonaDao {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Persona p = new Persona(
-                        rs.getDouble("id"),
+                Persona p = factory.createPersona(
+                        rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getString("apellido"),
                         rs.getString("correo"),
@@ -95,8 +98,8 @@ public class PersonaDaoH2 implements PersonaDao {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return new Persona(
-                            rs.getDouble("id"),
+                    return factory.createPersona(
+                            rs.getInt("id"),
                             rs.getString("nombre"),
                             rs.getString("apellido"),
                             rs.getString("correo"),

@@ -4,6 +4,8 @@ import com.mycompany.aplicacionpoo.dto.*;
 import com.mycompany.aplicacionpoo.Controller.*;
 import com.mycompany.aplicacionpoo.View.*;
 import com.mycompany.aplicacionpoo.Model.*;
+import com.mycompany.aplicacionpoo.factory.factoryInterna.InternalFactory;
+import com.mycompany.aplicacionpoo.observer.CursoConsoleObserver;
 
 public class ExternalFactory {
     
@@ -95,6 +97,10 @@ public class ExternalFactory {
     }
     
     
+    public CursoConsoleObserver createCursoConsoleObserver(){
+       return  new CursoConsoleObserver(InternalFactory.getInstance().createCursoService());
+    }
+    
     
     public VentanaPrincipal createVentanaPrincipal() {
         return new VentanaPrincipal();
@@ -130,6 +136,10 @@ public class ExternalFactory {
     
     public CursoProfesorView createCursoProfesorView() {
         return new CursoProfesorView();
+    }
+    
+    public CursoObserverView createCursoObserverView(){
+        return new CursoObserverView(InternalFactory.getInstance().createCursoService()); 
     }
     
     

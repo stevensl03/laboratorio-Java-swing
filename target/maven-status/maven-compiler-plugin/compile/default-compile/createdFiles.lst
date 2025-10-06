@@ -1,4 +1,5 @@
 com\mycompany\aplicacionpoo\View\InscripcionView$7.class
+com\mycompany\aplicacionpoo\observer\Subject.class
 com\mycompany\aplicacionpoo\factory\factoryExterna\ExternalFactory.class
 com\mycompany\aplicacionpoo\View\PersonasView$8.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$7.class
@@ -19,6 +20,7 @@ com\mycompany\aplicacionpoo\View\EstudianteView$3.class
 com\mycompany\aplicacionpoo\View\CursoProfesorView$4.class
 com\mycompany\aplicacionpoo\View\FacultadView$2.class
 com\mycompany\aplicacionpoo\View\CursoView$5.class
+com\mycompany\aplicacionpoo\View\CursoObserverView$1.class
 com\mycompany\aplicacionpoo\View\VentanaPrincipal.class
 com\mycompany\aplicacionpoo\View\ProfesorView$4.class
 com\mycompany\aplicacionpoo\View\CursoView$2.class
@@ -56,6 +58,7 @@ com\mycompany\aplicacionpoo\View\CursoView$7.class
 com\mycompany\aplicacionpoo\dao\impl\h2\InscripcionDaoH2.class
 com\mycompany\aplicacionpoo\Controller\PersonaController.class
 com\mycompany\aplicacionpoo\dao\impl\h2\EstudianteDaoH2.class
+com\mycompany\aplicacionpoo\observer\CursoConsoleObserver.class
 com\mycompany\aplicacionpoo\View\PersonasView$9.class
 com\mycompany\aplicacionpoo\Model\Programa.class
 com\mycompany\aplicacionpoo\View\EstudianteView$8.class
@@ -80,6 +83,7 @@ com\mycompany\aplicacionpoo\View\ProfesorView.class
 com\mycompany\aplicacionpoo\View\CursoView$1.class
 com\mycompany\aplicacionpoo\AplicacionPOO.class
 com\mycompany\aplicacionpoo\dao\PersonaDao.class
+com\mycompany\aplicacionpoo\View\CursoObserverView.class
 com\mycompany\aplicacionpoo\View\FacultadView$6.class
 com\mycompany\aplicacionpoo\dao\impl\mysql\CursoProfesorDaoMySQL.class
 com\mycompany\aplicacionpoo\service\CursoService.class
@@ -146,12 +150,14 @@ com\mycompany\aplicacionpoo\View\CursoProfesorView$6.class
 com\mycompany\aplicacionpoo\View\InscripcionView$8.class
 com\mycompany\aplicacionpoo\Controller\EstudianteController.class
 com\mycompany\aplicacionpoo\Model\Servicios.class
+com\mycompany\aplicacionpoo\observer\Observer.class
 com\mycompany\aplicacionpoo\Controller\ProfesorController.class
 com\mycompany\aplicacionpoo\View\FacultadView$4.class
 com\mycompany\aplicacionpoo\dao\ProgramaDao.class
 com\mycompany\aplicacionpoo\View\EstudianteView$5.class
 com\mycompany\aplicacionpoo\View\ProgramaView$1.class
 com\mycompany\aplicacionpoo\View\ProfesorView$2.class
+com\mycompany\aplicacionpoo\View\CursoObserverView$2.class
 com\mycompany\aplicacionpoo\View\CursoView$4.class
 com\mycompany\aplicacionpoo\View\InscripcionView$1.class
 com\mycompany\aplicacionpoo\View\VentanaPrincipal$2.class

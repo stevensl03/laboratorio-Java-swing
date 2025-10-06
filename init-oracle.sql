@@ -1,11 +1,11 @@
 -- Script de inicialización para Oracle Database
 -- Crear usuario y esquema
-CREATE USER testdb IDENTIFIED BY 1234;
-GRANT CONNECT, RESOURCE, DBA TO testdb;
-GRANT UNLIMITED TABLESPACE TO testdb;
+CREATE USER C##TESTDB IDENTIFIED BY 1234;
+GRANT CONNECT, RESOURCE, DBA TO C##TESTDB;
+GRANT UNLIMITED TABLESPACE TO C##TESTDB;
 
--- Conectar como testdb
-CONNECT testdb/1234@XE;
+-- Conectar como C##TESTDB
+CONNECT C##TESTDB/1234@XE;
 
 -- Tabla persona (base para estudiantes y profesores)
 CREATE TABLE persona (

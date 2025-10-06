@@ -175,7 +175,7 @@ public class InternalFactory {
      * Crea un CursoService
      */
     public CursoService createCursoService() {
-        return new CursoService();
+        return  CursoService.getInstance();
     }
     
     /**

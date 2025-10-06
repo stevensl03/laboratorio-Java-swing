@@ -3629,3 +3629,343 @@ SELECT id, nombre, apellido, correo, categoria FROM profesor [42122-224]
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:05:47.600696-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "NOMBRE" no encontrada
+Column "NOMBRE" not found; SQL statement:
+SELECT id, nombre, apellido, correo, codigo, programa_id, activo, promedio FROM estudiante [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.EstudianteDaoH2.mostrarTodos(EstudianteDaoH2.java:75)
+	at com.mycompany.aplicacionpoo.service.EstudianteService.mostrarEstudiante(EstudianteService.java:59)
+	at com.mycompany.aplicacionpoo.Controller.EstudianteController.mostrarEstudiante(EstudianteController.java:32)
+	at com.mycompany.aplicacionpoo.View.EstudianteView.<init>(EstudianteView.java:28)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createEstudianteView(ExternalFactory.java:108)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$1(VentanaPrincipal.java:95)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:06:28.133051-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "NOMBRE" no encontrada
+Column "NOMBRE" not found; SQL statement:
+SELECT id, nombre, apellido, correo, codigo, programa_id, activo, promedio FROM estudiante [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.EstudianteDaoH2.mostrarTodos(EstudianteDaoH2.java:75)
+	at com.mycompany.aplicacionpoo.service.EstudianteService.mostrarEstudiante(EstudianteService.java:59)
+	at com.mycompany.aplicacionpoo.Controller.EstudianteController.mostrarEstudiante(EstudianteController.java:32)
+	at com.mycompany.aplicacionpoo.View.EstudianteView.<init>(EstudianteView.java:28)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createEstudianteView(ExternalFactory.java:108)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$1(VentanaPrincipal.java:95)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:12:01.747806-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "NOMBRE" no encontrada
+Column "NOMBRE" not found; SQL statement:
+SELECT id, nombre, apellido, correo, codigo, programa_id, activo, promedio FROM estudiante [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.EstudianteDaoH2.mostrarTodos(EstudianteDaoH2.java:77)
+	at com.mycompany.aplicacionpoo.service.EstudianteService.mostrarEstudiante(EstudianteService.java:59)
+	at com.mycompany.aplicacionpoo.Controller.EstudianteController.mostrarEstudiante(EstudianteController.java:32)
+	at com.mycompany.aplicacionpoo.View.EstudianteView.<init>(EstudianteView.java:28)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createEstudianteView(ExternalFactory.java:108)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$1(VentanaPrincipal.java:95)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:15:34.752353-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CONSTANTS" no encontrada
+Table "CONSTANTS" not found; SQL statement:
+SELECT * FROM CONSTANTS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.758664-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "ENUM_VALUES" no encontrada
+Table "ENUM_VALUES" not found; SQL statement:
+SELECT * FROM ENUM_VALUES LIMIT 3 [42102-224]
+2025-10-05 15:15:34.760933-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INDEXES" no encontrada
+Table "INDEXES" not found; SQL statement:
+SELECT * FROM INDEXES LIMIT 3 [42102-224]
+2025-10-05 15:15:34.763674-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INDEX_COLUMNS" no encontrada
+Table "INDEX_COLUMNS" not found; SQL statement:
+SELECT * FROM INDEX_COLUMNS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.764812-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INFORMATION_SCHEMA_CATALOG_NAME" no encontrada
+Table "INFORMATION_SCHEMA_CATALOG_NAME" not found; SQL statement:
+SELECT * FROM INFORMATION_SCHEMA_CATALOG_NAME LIMIT 3 [42102-224]
+2025-10-05 15:15:34.765833-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "IN_DOUBT" no encontrada
+Table "IN_DOUBT" not found; SQL statement:
+SELECT * FROM IN_DOUBT LIMIT 3 [42102-224]
+2025-10-05 15:15:34.766836-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "LOCKS" no encontrada
+Table "LOCKS" not found; SQL statement:
+SELECT * FROM LOCKS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.769472-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "QUERY_STATISTICS" no encontrada
+Table "QUERY_STATISTICS" not found; SQL statement:
+SELECT * FROM QUERY_STATISTICS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.772335-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "RIGHTS" no encontrada
+Table "RIGHTS" not found; SQL statement:
+SELECT * FROM RIGHTS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.773335-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "ROLES" no encontrada
+Table "ROLES" not found; SQL statement:
+SELECT * FROM ROLES LIMIT 3 [42102-224]
+2025-10-05 15:15:34.775424-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SESSIONS" no encontrada
+Table "SESSIONS" not found; SQL statement:
+SELECT * FROM SESSIONS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.776553-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SESSION_STATE" no encontrada
+Table "SESSION_STATE" not found; SQL statement:
+SELECT * FROM SESSION_STATE LIMIT 3 [42102-224]
+2025-10-05 15:15:34.777924-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SETTINGS" no encontrada
+Table "SETTINGS" not found; SQL statement:
+SELECT * FROM SETTINGS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.779310-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SYNONYMS" no encontrada
+Table "SYNONYMS" not found; SQL statement:
+SELECT * FROM SYNONYMS LIMIT 3 [42102-224]
+2025-10-05 15:15:34.780728-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "USERS" no encontrada
+Table "USERS" not found; SQL statement:
+SELECT * FROM USERS LIMIT 3 [42102-224]
+2025-10-05 15:17:52.639181-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "NOMBRE" no encontrada
+Column "NOMBRE" not found; SQL statement:
+SELECT id, nombre, apellido, correo, categoria FROM profesor [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.ProfesorDaoH2.mostrarTodos(ProfesorDaoH2.java:69)
+	at com.mycompany.aplicacionpoo.service.ProfesorService.mostrarProfesor(ProfesorService.java:55)
+	at com.mycompany.aplicacionpoo.Controller.ProfesorController.mostrarProfesor(ProfesorController.java:55)
+	at com.mycompany.aplicacionpoo.View.ProfesorView.<init>(ProfesorView.java:29)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createProfesorView(ExternalFactory.java:112)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$2(VentanaPrincipal.java:96)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:44:11.449584-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "AÑO" no encontrada
+Column "AÑO" not found; SQL statement:
+SELECT curso_id, estudiante_id, año, semestre FROM inscripcion [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.InscripcionDaoH2.mostrarTodos(InscripcionDaoH2.java:68)
+	at com.mycompany.aplicacionpoo.service.InscripcionService.mostrarInscripcion(InscripcionService.java:59)
+	at com.mycompany.aplicacionpoo.Controller.InscripcionController.mostrarInscripcion(InscripcionController.java:32)
+	at com.mycompany.aplicacionpoo.View.InscripcionView.<init>(InscripcionView.java:28)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createInscripcionView(ExternalFactory.java:128)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$6(VentanaPrincipal.java:100)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-10-05 15:44:13.235599-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CURSO_PROFESOR" no encontrada
+Table "CURSO_PROFESOR" not found; SQL statement:
+SELECT profesor_id, curso_id, año, semestre FROM curso_profesor [42102-224]
+2025-10-05 15:44:46.938200-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "AÑO" no encontrada
+Column "AÑO" not found; SQL statement:
+SELECT curso_id, estudiante_id, año, semestre FROM inscripcion [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1170)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:94)
+	at com.mycompany.aplicacionpoo.dao.impl.h2.InscripcionDaoH2.mostrarTodos(InscripcionDaoH2.java:68)
+	at com.mycompany.aplicacionpoo.service.InscripcionService.mostrarInscripcion(InscripcionService.java:59)
+	at com.mycompany.aplicacionpoo.Controller.InscripcionController.mostrarInscripcion(InscripcionController.java:32)
+	at com.mycompany.aplicacionpoo.View.InscripcionView.<init>(InscripcionView.java:28)
+	at com.mycompany.aplicacionpoo.factory.factoryExterna.ExternalFactory.createInscripcionView(ExternalFactory.java:128)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal.lambda$createInfoPanel$6(VentanaPrincipal.java:100)
+	at com.mycompany.aplicacionpoo.View.VentanaPrincipal$2.mouseClicked(VentanaPrincipal.java:159)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6579)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3404)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6341)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2260)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4958)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2318)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4916)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4568)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4500)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2304)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2671)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4790)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:725)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:702)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)

@@ -23,7 +23,7 @@ public class AplicacionPOOSimple {
             System.out.println("prueba");
             
         } catch (Exception e) {
-            System.err.println("fallo mielda " + e.getMessage());
+            System.err.println("fallo :V :X :C " + e.getMessage());
             e.printStackTrace();
         }
     }
