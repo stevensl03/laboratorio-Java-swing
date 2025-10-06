@@ -2,7 +2,8 @@ Aplicación java.
 
 
 docker:
-direcorio "./laboratorio-Java-swing/"
+
+dir "./laboratorio-Java-swing/"
 
     docker compose up -d
 
