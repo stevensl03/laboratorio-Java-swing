@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Observer que muestra los cursos en consola cuando hay cambios
- * Implementación estricta del patrón Observer
+ * Implementación del patrón Observer
  */
 public class CursoConsoleObserver implements Observer {
 
